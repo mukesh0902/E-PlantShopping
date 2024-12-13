@@ -3,6 +3,7 @@ import "./ProductList.css";
 import CartItem from "./CartItem";
 import { useDispatch } from "react-redux";
 import { addItem } from "./CartSlice";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function ProductList() {
   const [showCart, setShowCart] = useState(false);
@@ -305,111 +306,106 @@ function ProductList() {
   };
 
   return (
-    
-  
     <div>
-          
-      <div className="navbar">
-        <div className="tag">
-          <div className="luxury">
-            <img
-              src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png"
-              alt=""
-            />
-            <a href="/" style={{ textDecoration: "none" }}>
-              <div>
-                <h3>Paradise Nursery</h3>
-                <i>Where Green Meets Serenity</i>
-              </div>
-            </a>
-          </div>
+      <div className="navbar d-flex justify-content-between align-items-center">
+        <div className="luxury d-flex align-items-center">
+          <img
+            src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png"
+            alt=""
+            style={{ width: "50px", marginRight: "10px" }}
+          />
+          <a href="/" className="text-white">
+            <h3>Paradise Nursery</h3>
+            <i>Where Green Meets Serenity</i>
+          </a>
         </div>
-        <ul className="ul">
-          <div>
-            <a href="#" onClick={(e) => handlePlantsClick(e)} style={styleA}>
-              Plants
-            </a>
-          </div>
-          <div>
-            <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
-              <h1 className="cart">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 256 256"
-                  id="IconChangeColor"
-                  height="68"
-                  width="68"
-                >
-                  <circle cx="80" cy="216" r="12" />
-                  <circle cx="184" cy="216" r="12" />
-                  <path
-                    d="M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8"
-                    fill="none"
-                    stroke="#faf9f9"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                  ></path>
-                </svg>
-              </h1>
-            </a>
-          </div>
-        </ul>
+        <div>
+          <a
+            href="#"
+            onClick={(e) => handlePlantsClick(e)}
+            className="btn btn-success mx-2"
+          >
+            Plants
+          </a>
+          <a
+            href="#"
+            onClick={(e) => handleCartClick(e)}
+            className="btn btn-success"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 256 256"
+              height="24"
+              width="24"
+              fill="white"
+            >
+              <circle cx="80" cy="216" r="12" />
+              <circle cx="184" cy="216" r="12" />
+              <path
+                d="M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8"
+                stroke="#faf9f9"
+                strokeWidth="2"
+              ></path>
+            </svg>
+          </a>
+        </div>
       </div>
-      {notification && (
-  <div className="notification">
-    {notification}
-  </div>
-)}
-
-      <input
-        type="text"
-        placeholder="Search plants..."
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <select
-        onChange={(e) => setSelectedCategory(e.target.value)}
-        value={selectedCategory}
-      >
-        <option value="">All Categories</option>
-        {plantsArray.map((category) => (
-          <option key={category.category} value={category.category}>
-            {category.category}
-          </option>
-        ))}
-      </select>
-
-      {!showCart ? (
-        <div className="product-grid">
-          {filteredPlantsArray.map((category) => (
-            <div key={category.category}>
-              <h2 onClick={() => toggleCategory(category.category)}>
-                {category.category}
-              </h2>
-              {expandedCategories[category.category] && (
-                <div className="plants">
-                  {category.plants.map((plant, index) => (
-                    <div key={index} className="plant-card">
-                      <img src={plant.image} alt={plant.name} />
-                      <h3>{plant.name}</h3>
-                      <p>{plant.description}</p>
-                      <p>{plant.cost}</p>
-                      <button onClick={() => handleAddToCart(plant)}>
-                        Add to Cart
-                      </button>
-                      
-
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+      {notification && <div className="notification">{notification}</div>}
+      <div className="container">
+        <input
+          type="text"
+          className="form-control my-3"
+          placeholder="Search plants..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <select
+          className="form-select mb-3"
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          value={selectedCategory}
+        >
+          <option value="">All Categories</option>
+          {plantsArray.map((category) => (
+            <option key={category.category} value={category.category}>
+              {category.category}
+            </option>
           ))}
-        </div>
-      ) : (
-        <CartItem onContinueShopping={handleContinueShopping} />
-      )}
+        </select>
+        {!showCart ? (
+          <div className="product-grid">
+            {filteredPlantsArray.map((category) => (
+              <div key={category.category}>
+                <h2
+                  className="text-success"
+                  onClick={() => toggleCategory(category.category)}
+                >
+                  {category.category}
+                </h2>
+                {expandedCategories[category.category] && (
+                  <div className="plants">
+                    {category.plants.map((plant, index) => (
+                      <div key={index} className="plant-card">
+                        <img src={plant.image} alt={plant.name} />
+                        <h3>{plant.name}</h3>
+                        <p>{plant.description}</p>
+                        <p>{plant.cost}</p>
+                        <button
+                          className="btn btn-success"
+                          onClick={() => handleAddToCart(plant)}
+                        >
+                          Add to Cart
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <CartItem onContinueShopping={handleContinueShopping} />
+        )}
+      </div>
     </div>
   );
 }

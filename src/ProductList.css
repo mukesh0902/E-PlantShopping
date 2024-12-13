@@ -65,20 +65,23 @@ body {
     font-size: 18px;
     transition: color 0.3s, transform 0.3s;
 }
+
 .navbar .ul a.active {
     border-bottom: 2px solid white;
 }
 
 .notification {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #e56700;
+    top: 10px;
+    right: 10px;
+    background-color: #df7e00;
     color: white;
-    padding: 10px 20px;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    z-index: 9999;
+    font-size: 1rem;
+    animation: fadeout 3s forwards;
 }
 
 .navbar .ul a:hover {
@@ -116,14 +119,13 @@ body {
 
 /* Search and Filter */
 
-input[type="text"], select {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 200px;
-    transition: border-color 0.3s ease;
+select, input[type="text"] {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border: 1px solid #28a745;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
 }
 
 input[type="text"]:focus, select:focus {
@@ -142,26 +144,18 @@ input[type="text"]:focus, select:focus {
 }
 
 .plant-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    background-color: #f8f9fa;
+    /* Light gray */
+    border: 1px solid #28a745;
+    border-radius: 8px;
+    padding: 1rem;
     text-align: center;
-    padding: 20px;
-    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .plant-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.plant-card img {
-    width: 100%;
-    border-radius: 5px;
-    height: 200px;
-    object-fit: cover;
+    max-width: 100%;
+    border-radius: 8px;
 }
 
 .plant-card:hover {
@@ -171,7 +165,7 @@ input[type="text"]:focus, select:focus {
 
 .plant-card h3 {
     font-size: 1.2rem;
-    color: #333;
+    color: #155724;
     margin: 10px 0;
 }
 
@@ -185,6 +179,20 @@ input[type="text"]:focus, select:focus {
     font-size: 1.2rem;
     color: #e74c3c;
     margin: 10px 0;
+}
+
+.plant-card button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.plant-card button:hover {
+    background-color: #218838;
+    /* Darker green */
 }
 
 
