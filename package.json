@@ -4,11 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "npx vite",
     "build": "npx vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite build; vite preview --host"
   },
+
+"engines": {
+  "node": "16.x"
+},
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
     "bootstrap": "^5.3.3",
