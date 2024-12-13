@@ -10,6 +10,8 @@
     "preview": "vite build; vite preview --host",
     "postinstall": "chmod +x node_modules/.bin/vite"
   },
+  "homepage": "/shoppingreact",
+  
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
     "bootstrap": "^5.3.3",
